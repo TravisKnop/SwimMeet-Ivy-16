@@ -23,10 +23,15 @@ def get_event(event):
     return event
 
 event = get_event("160225F002")
-#event2 = event.split("Meet Record:M ")[1]
-event3 = event.split("Men - Team Rankings")[0]
+event = event.replace("<span></span>", " ")
+print(event[:200])
+event2 = event.split("\n")
+print(type(event2))
 
-print("~"*100)
-print("event = ")
-print("")
-print(event[:500])
+def cut_splits(string):
+    if re.compile(r'^a-z') in string:
+        print("OK!" + string)
+        return string
+        
+cut_splits(event2[150:250])
+    
