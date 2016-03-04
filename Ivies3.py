@@ -3,15 +3,6 @@ import json
 import re
 import pandas as pd
 
-Harvard = []
-Princeton = []
-Penn = []
-Cornell = []
-Columbia = []
-Dartmouth = []
-Brown = []
-Yale = []
-
 list_of_events = [
     "160225F001", "160225F002", "160225F003", "160225F004", "160225F005", "160225F006",
     "160225F007", "160225F008", "160225F009", "160225F010", "160225F011", "160225F012", "160225F013", "160225F014",
@@ -23,15 +14,35 @@ def get_event(event):
     return event
 
 event = get_event("160225F002")
-event = event.replace("<span></span>", " ")
-print(event[:200])
+event = event.replace("<span></span>", "")
 event2 = event.split("\n")
-print(type(event2))
 
-def cut_splits(string):
-    if re.compile(r'^a-z') in string:
-        print("OK!" + string)
+def cutsplits(string):
+    prog = re.compile('\ \d+\ +[A-Z]')
+    result = prog.search(string)
+#    alphabet = 'aeiou'
+ #   for character in string:
+ #       if character in alphabet:
+    if result:
         return string
-        
-cut_splits(event2[150:250])
-    
+
+
+print("")
+print("")
+print("")
+print("")
+print("")
+print("START PROGRAM HERE")
+print("")
+print("")
+print("")
+print("")
+
+all = []
+for line in event2:
+    text = cutsplits(line)
+    if text:
+        all.append(text)
+
+for item in all:
+    print(item)
